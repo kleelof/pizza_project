@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Basic route
 app.get('/', (req, res) => {
-  res.send('Hello World from Express and MongoDB Atlas!');
+  res.send('Hello World!');
 });
 
 // Start the server
