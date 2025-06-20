@@ -7,6 +7,7 @@ const todoController = require('./controllers/todoController');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Middleware to serve templates
 app.use((req, res, next) => {
   res.locals.templatesPath = path.join(process.cwd(), 'views');
   next();
@@ -14,10 +15,9 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// template engine setup
 app.set('view engine', 'ejs');
 
-// Replace this with your actual MongoDB Atlas connection string
-const mongoURI = process.env.MONGO_URI;
 
 // Connect to MongoDB Atlas
 mongoose.connect(process.env.MONGO_URI)

@@ -2,7 +2,7 @@ const Todo = require('../models/todo');
 
 // Create a new todo
 exports.getCreateForm = async(req, res) => {
-  res.render(res.locals.templatesPath + '/addTodo.ejs');
+  res.render(res.locals.templatesPath + '/todo/add.ejs');
 }
 
 exports.create = async (req, res) => {
@@ -22,7 +22,7 @@ exports.create = async (req, res) => {
 exports.showAll = async (req, res) => {
   try {
     const todos = await Todo.find(); // Fetch all todos
-    res.render(res.locals.templatesPath + '/todos.ejs', { todos });
+    res.render(res.locals.templatesPath + '/todo/all.ejs', { todos });
 
   } catch (err) {
     console.error(err);
@@ -51,7 +51,7 @@ exports.view = async (req, res) => {
     if (!todo) {
       res.redirect('/todos'); // Redirect if todo not found
     }
-    res.render(res.locals.templatesPath + '/viewTodo.ejs', { todo });
+    res.render(res.locals.templatesPath + '/todo/view.ejs', { todo });
   } catch (err) {
     console.error(err);
     res.redirect('/todos'); // Redirect to the todos list on error
@@ -66,7 +66,7 @@ exports.getUpdateForm = async (req, res) => {
     if (!todo) {
       return res.redirect('/todos'); // Redirect if todo not found
     }
-    res.render(res.locals.templatesPath + '/updateTodo.ejs', { todo }); // Render update form with todo data
+    res.render(res.locals.templatesPath + '/todo/update.ejs', { todo }); // Render update form with todo data
   } catch (err) {
     console.error(err);
     res.redirect('/todos'); // Redirect to the todos list on error
@@ -78,7 +78,7 @@ exports.update = async (req, res) => {
     const updatedData = req.body; // Get updated data from request body
     const updatedTodo = await Todo.findByIdAndUpdate(updatedData.id, updatedData, { new: true }); // Update the todo
     console.log('Updated Todo:', updatedTodo);
-    res.redirect('/todos'); 
+    res.redirect('/todo'); 
   } catch (err) {
     console.error(err);
     res.redirect('/todos'); 
