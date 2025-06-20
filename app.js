@@ -1,9 +1,20 @@
 const express = require('express');
+const path = require('path');
 const mongoose = require('mongoose');
 require('dotenv').config();
+const todoController = require('./controllers/todoController');
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+app.use((req, res, next) => {
+  res.locals.templatesPath = path.join(process.cwd(), 'views');
+  next();
+});
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+app.set('view engine', 'ejs');
 
 // Replace this with your actual MongoDB Atlas connection string
 const mongoURI = process.env.MONGO_URI;
@@ -17,10 +28,17 @@ mongoose.connect(process.env.MONGO_URI)
     console.error('Error connecting to MongoDB Atlas:', error);
   });
 
-// Basic route
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+
+// Todo Routes
+app.get('/todo/create', todoController.getCreateForm);
+app.post('/todo/create', todoController.create);
+app.get('/todos', todoController.showAll);
+
+// Inventory routes
+
+
+// Ordering routes
+
 
 // Start the server
 app.listen(port, () => {
