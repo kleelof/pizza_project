@@ -1,24 +1,28 @@
 <%- include('header'); -%>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Notes</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% todos.forEach(todo => { %>
-            <tr>
-                <td><a href="/todo/<%= todo.id %>"><%= todo.name %></a></td>
-                <td><%= todo.notes %></td>
-                <td>
-                    <a href="/todo/edit/<%= todo.id %>">Edit</a> |
-                    <a href="/todo/delete/<%= todo.id %>">Delete</a>
-                </td>
-            </tr>
-        <% }); %>
-    </tbody>
-</table>
-<a href="/todo/create" class="btn btn-primary">Add Todo</a>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% todos.forEach(todo => { %>
+                    <tr>
+                        <td><a href="/todo/<%= todo.id %>"><%= todo.name %></a></td>
+                        <td><%= todo.notes %></td>
+                        <td>
+                            <a href="/todo/update/<%= todo.id %>">Edit</a> |
+                            <a href="/todo/delete/<%= todo.id %>">Delete</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <a href="/todo/create" class="btn btn-primary">Add Todo</a>
+    </div>
+</div>
 <%- include('footer'); -%>

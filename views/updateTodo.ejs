@@ -1,0 +1,14 @@
+<%- include('header'); -%>
+<div class="row">
+  <div class="col-md-12">
+    <h1>Create a New Todo</h1>
+    <form action="/todo/update" method="POST">
+        <input type="hidden" name="id" value="<%= todo.id %>" />
+      <label>Name: <input type="text" name="name" required  class="form-control" value="<%= todo.name %>" /></label><br />
+      <label>Notes: <input type="text" name="notes" required  class="form-control" value="<%= todo.notes %>" /></label><br />
+      <button type="submit" class="btn btn btn-success mt-2">Submit</button>
+      <a href="/todos" class="btn btn btn-danger mt-2">Cancel</a>
+    </form>
+  </div>
+</div>
+<%- include('footer'); -%>

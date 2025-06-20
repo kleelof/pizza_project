@@ -33,6 +33,10 @@ mongoose.connect(process.env.MONGO_URI)
 app.get('/todo/create', todoController.getCreateForm);
 app.post('/todo/create', todoController.create);
 app.get('/todos', todoController.showAll);
+app.get('/todo/delete/:id', todoController.delete);
+app.get('/todo/:id', todoController.view);
+app.get('/todo/update/:id', todoController.getUpdateForm);
+app.post('/todo/update/', todoController.update);
 
 // Inventory routes
 

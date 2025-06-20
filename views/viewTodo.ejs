@@ -1,0 +1,17 @@
+<%- include('header'); -%>
+<div class="row">
+  <div class="col-md-12">
+    <h1>Todo Details</h1>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= todo.name %></h5>
+        <p class="card-text"><%= todo.notes %></p>
+        <a href="/todo/update/<%= todo.id %>" class="btn btn-primary">Edit</a>
+        <a href="/todo/delete/<%= todo.id %>" class="btn btn-danger">Delete</a>
+        <a href="/todos" class="btn btn-secondary">Back to Todos</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('footer'); -%>
