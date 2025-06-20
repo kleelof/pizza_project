@@ -1,33 +1,24 @@
-
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Notes</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% todos.forEach(todo => { %>
-                <tr>
-                    <td><%= todo.name %></td>
-                    <td><%= todo.notes %></td>
-                    <td>
-                        <a href="/todo/edit/{{ todo.id }}">Edit</a> |
-                        <a href="/todo/delete/{{ todo.id }}">Delete</a>
-                    </td>
-                </tr>
-                <% }); %>
-            </tbody>
-    </body>
-</html>
+<%- include('header'); -%>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Notes</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% todos.forEach(todo => { %>
+            <tr>
+                <td><a href="/todo/<%= todo.id %>"><%= todo.name %></a></td>
+                <td><%= todo.notes %></td>
+                <td>
+                    <a href="/todo/edit/<%= todo.id %>">Edit</a> |
+                    <a href="/todo/delete/<%= todo.id %>">Delete</a>
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+<a href="/todo/create" class="btn btn-primary">Add Todo</a>
+<%- include('footer'); -%>

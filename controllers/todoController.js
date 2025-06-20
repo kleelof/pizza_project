@@ -2,12 +2,15 @@ const Todo = require('../models/todo');
 
 // Create a new todo
 exports.getCreateForm = async(req, res) => {
-  res.render(res.locals.templatesPath + '/addTodo.html');
+  res.render(res.locals.templatesPath + '/addTodo.ejs');
 }
 
 exports.create = async (req, res) => {
   try {
-    const newTodo = new Todo(req.body);
+    const newTodo = new Todo({
+      ...req.body,
+      completed: false
+    });
     const savedTodo = await newTodo.save();
     res.redirect("/todos");
   } catch (err) {
