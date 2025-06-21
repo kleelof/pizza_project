@@ -1,0 +1,14 @@
+<%- include('../header'); -%>
+<div class="row">
+  <div class="col-md-12">
+    <h1>Create a New Order</h1>
+    <form action="/order/update" method="POST">
+        <input type="hidden" name="id" value="<%= order.id %>" />
+      <label>Name: <input type="text" name="name" required  class="form-control" value="<%= order.name %>" /></label><br />
+      <label>Address: <input type="text" name="address" required  class="form-control" value="<%= order.address %>" /></label><br />
+      <button type="submit" class="btn btn btn-success mt-2">Submit</button>
+      <a href="/orders" class="btn btn btn-danger mt-2">Cancel</a>
+    </form>
+  </div>
+</div>
+<%- include('../footer'); -%>

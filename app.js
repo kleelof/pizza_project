@@ -45,7 +45,13 @@ app.get('/inventory', inventoryController.showAll);
 
 
 // Ordering routes
+app.get('/order/create', orderController.getCreateForm);
+app.post('/order/create', orderController.create);
 app.get('/order', orderController.showAll);
+app.get('/order/delete/:id', orderController.delete);
+app.get('/order/:id', orderController.view);
+app.get('/order/update/:id', orderController.getUpdateForm);
+app.post('/order/update/', orderController.update);
 
 // Start the server
 app.listen(port, () => {

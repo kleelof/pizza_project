@@ -1,5 +1,5 @@
 const Order = require('../models/order');
-const path = require('path')
+const path = require('path') //variable assigned for path normalization, reference line 26
 
 // Create a new order
 exports.getCreateForm = async(req, res) => {

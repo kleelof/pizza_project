@@ -1,0 +1,17 @@
+<%- include('../header'); -%>
+<div class="row">
+  <div class="col-md-12">
+    <h1>Order Details</h1>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= order.name %></h5>
+        <p class="card-text"><%= order.address %></p>
+        <a href="/order/update/<%= order.id %>" class="btn btn-primary">Edit</a>
+        <a href="/order/delete/<%= order.id %>" class="btn btn-danger">Delete</a>
+        <a href="/orders" class="btn btn-secondary">Back to Orders</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../footer'); -%>
