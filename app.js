@@ -3,6 +3,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const todoController = require('./controllers/todoController');
+const inventoryController = require('./controllers/inventoryController');
+const orderController = require('./controllers/orderController');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -32,13 +34,14 @@ mongoose.connect(process.env.MONGO_URI)
 // Todo Routes
 app.get('/todo/create', todoController.getCreateForm);
 app.post('/todo/create', todoController.create);
-app.get('/todos', todoController.showAll);
+app.get('/todos', todoController.showAll); // <- list things
 app.get('/todo/delete/:id', todoController.delete);
 app.get('/todo/:id', todoController.view);
 app.get('/todo/update/:id', todoController.getUpdateForm);
 app.post('/todo/update/', todoController.update);
 
 // Inventory routes
+app.get('/inventory', inventoryController.showAll);
 
 
 // Ordering routes
