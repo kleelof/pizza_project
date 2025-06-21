@@ -45,7 +45,7 @@ app.get('/inventory', inventoryController.showAll);
 
 
 // Ordering routes
-
+app.get('/order', orderController.showAll);
 
 // Start the server
 app.listen(port, () => {
