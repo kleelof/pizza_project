@@ -3,6 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const todoController = require('./controllers/todoController');
+const orderController = require('./controllers/orderController')
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -42,7 +43,7 @@ app.post('/todo/update/', todoController.update);
 
 
 // Ordering routes
-
+app.get('/order', orderController.showAll);
 
 // Start the server
 app.listen(port, () => {
