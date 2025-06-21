@@ -1,0 +1,28 @@
+<%- include('../header'); -%>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% orders.forEach(order => { %>
+                    <tr>
+                        <td><a href="/order/<%= order.id %>"><%= order.name %></a></td>
+                        <td><%= order.notes %></td>
+                        <td>
+                            <a href="/order/update/<%= order.id %>">Edit</a> |
+                            <a href="/order/delete/<%= order.id %>">Delete</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <a href="/order/create" class="btn btn-primary">Add Order</a>
+    </div>
+</div>
+<%- include('../footer'); -%>
