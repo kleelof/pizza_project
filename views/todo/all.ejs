@@ -6,6 +6,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Notes</th>
+                    <th>Completed</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -14,6 +15,7 @@
                     <tr>
                         <td><a href="/todo/<%= todo.id %>"><%= todo.name %></a></td>
                         <td><%= todo.notes %></td>
+                        <td><%= todo.completed %></td>
                         <td>
                             <a href="/todo/update/<%= todo.id %>">Edit</a> |
                             <a href="/todo/delete/<%= todo.id %>">Delete</a>

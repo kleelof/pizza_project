@@ -22,7 +22,7 @@ exports.create = async (req, res) => {
 exports.showAll = async (req, res) => {
   
   try {
-    const todos = await Todox.find(); // Fetch all todos
+    const todos = await Todo.find(); // Fetch all todos
 
     console.log(`Todos: ${todos}`);
     res.render(res.locals.templatesPath + '/todo/all.ejs', { todos }); // returns teh view

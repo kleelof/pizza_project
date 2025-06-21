@@ -3,8 +3,21 @@
   <div class="col-md-12">
     <h1>Create a New Todo</h1>
     <form action="/todo/create" method="POST">
-      <label>Name: <input type="text" name="name" required  class="form-control" /></label><br />
-      <label>Notes: <input type="text" name="notes" required  class="form-control" /></label><br />
+      <label>Name: 
+        <input type="text" name="name" required  class="form-control" />
+      </label>
+      <br />
+      <label>Notes: 
+        <input type="text" name="notes" required  class="form-control" />
+      </label>
+      <br />
+      <label>Completed:: 
+        <select name="completed">
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </label>
+      <br />
       <button type="submit" class="btn btn btn-success mt-2">Submit</button>
       <a href="/todos" class="btn btn btn-danger mt-2">Cancel</a>
     </form>
