@@ -20,6 +20,9 @@ app.use(express.urlencoded({ extended: false }));
 // template engine setup
 app.set('view engine', 'ejs');
 
+// static files
+app.use(express.static('static'));
+
 
 // Connect to MongoDB Atlas
 mongoose.connect(process.env.MONGO_URI)

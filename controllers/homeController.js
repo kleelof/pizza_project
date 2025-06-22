@@ -1,0 +1,1 @@
+// create a "/" route to serve 'home.ejs'
