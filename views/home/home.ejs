@@ -1,0 +1,55 @@
+<%- include('../header'); -%>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Online Pizza Restaurant Ordering Website | Home</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+  <header>
+    <h1>Welcome to Our Online Pizza Restaurant Ordering Website</h1>
+  </header>
+
+  <!-- Banner Section -->
+  <section class="banners">
+    <% homeData.banners.forEach(banner => { %>
+      <a href="<%= banner.link %>">
+        <img src="<%= banner.image_url %>" alt="<%= banner.alt_text %>">
+      </a>
+    <% }) %>
+  </section>
+
+  <!-- Featured Pizzas -->
+  <section class="featured-pizzas">
+    <h2>Featured Pizzas</h2>
+    <div class="pizza-list">
+      <% homeData.featured_pizzas.forEach(pizza => { %>
+        <div class="pizza-card">
+          <img src="<%= pizza.image_url %>" alt="<%= pizza.name %>">
+          <h3><%= pizza.name %></h3>
+          <p><%= pizza.description %></p>
+          <p class="price">$<%= pizza.price.toFixed(2) %></p>
+        </div>
+      <% }) %>
+    </div>
+  </section>
+
+  <!-- Promotions -->
+  <section class="promotions">
+    <h2>Current Promotions</h2>
+    <ul>
+      <% homeData.promotions.forEach(promo => { %>
+        <li>
+          <strong><%= promo.title %>:</strong> <%= promo.description %> 
+          (Ends: <%= promo.valid_until.toDateString() %>)
+        </li>
+      <% }) %>
+    </ul>
+  </section>
+
+  <footer>
+    <p>&copy; <%= new Date().getFullYear() %> Online Pizza Restaurant Ordering Website. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+<%- include('../footer'); -%>
