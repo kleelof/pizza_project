@@ -1,55 +1,40 @@
-<%- include('../header'); -%>
+ <%- include('../header'); -%>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Online Pizza Restaurant Ordering Website | Home</title>
-  <link rel="stylesheet" href="/styles/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= homeData?.title || 'Our Online Pizza Restaurant Ordering System' %></title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-  <header>
-    <h1>Welcome to Our Online Pizza Restaurant Ordering Website</h1>
-  </header>
+<body class="bg-white text-gray-800">
+  <div class="flex flex-col items-center justify-center min-h-screen text-center px-4">
+    <h1 class="text-4xl font-bold mb-4">
+  <%= homeData?.title || 'Welcome to Our Online Pizza Restaurant Ordering System!' %>
+    </h1>
 
-  <!-- Banner Section -->
-  <section class="banners">
-    <% homeData.banners.forEach(banner => { %>
-      <a href="<%= banner.link %>">
-        <img src="<%= banner.image_url %>" alt="<%= banner.alt_text %>">
-      </a>
-    <% }) %>
-  </section>
+    <img src="/images/pizza.webp" alt="Pizza" class="w-64 h-64 object-cover rounded-full mb-6"
+/>
+    <h3 class="text-2xl mb-2">
+      <%= homeData?.subtitle || 'The best pizza in town' %>
+    </h3>
+    <p class="text-lg mb-6 max-w-xl">
+      <%= homeData?.description || 'Order now and enjoy hot, fresh pizza delivered to your door.' %>
+    </p>
 
-  <!-- Featured Pizzas -->
-  <section class="featured-pizzas">
-    <h2>Featured Pizzas</h2>
-    <div class="pizza-list">
-      <% homeData.featured_pizzas.forEach(pizza => { %>
-        <div class="pizza-card">
-          <img src="<%= pizza.image_url %>" alt="<%= pizza.name %>">
-          <h3><%= pizza.name %></h3>
-          <p><%= pizza.description %></p>
-          <p class="price">$<%= pizza.price.toFixed(2) %></p>
-        </div>
-      <% }) %>
-    </div>
-  </section>
+    <!-- Order Now Button -->
+    <a href="/order" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg mb-8">
+      Order Now
+    </a>
 
-  <!-- Promotions -->
-  <section class="promotions">
-    <h2>Current Promotions</h2>
-    <ul>
-      <% homeData.promotions.forEach(promo => { %>
-        <li>
-          <strong><%= promo.title %>:</strong> <%= promo.description %> 
-          (Ends: <%= promo.valid_until.toDateString() %>)
-        </li>
-      <% }) %>
-    </ul>
-  </section>
-
-  <footer>
-    <p>&copy; <%= new Date().getFullYear() %> Online Pizza Restaurant Ordering Website. All rights reserved.</p>
-  </footer>
+    <% if (homeData?.featuredItems?.length) { %>
+      <h4 class="text-xl font-semibold mb-2">Featured Items:</h4>
+      <ul class="list-disc list-inside">
+        <% homeData.featuredItems.forEach(item => { %>
+          <li><%= item %></li>
+        <% }); %>
+      </ul>
+    <% } %>
+  </div>
 </body>
 </html>
 <%- include('../footer'); -%>

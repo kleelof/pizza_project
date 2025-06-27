@@ -55,6 +55,8 @@ app.get('/inventory', inventoryController.showAll);
 
 // Order Routes
 app.get('/order', orderController.showAll);
+app.get('/order/create', orderController.getCreateForm);
+
 
 // Start the server
 app.listen(port, () => {
