@@ -8,6 +8,6 @@ const inventoryItemSchema = new mongoose.Schema({
   size: String, //L, M, S
 });
 
-const InventoryItem = mongoose.model('Inventory', inventoryItemSchema);
+const InventoryItem = mongoose.model('InventoryItem', inventoryItemSchema);
 
 module.exports = InventoryItem;
