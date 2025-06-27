@@ -11,7 +11,20 @@
                 </tr>
             </thead>
             <tbody>
-                <% inventory.forEach(inventory => { %>
+                <% inventory.forEach(inv => { %>
+                    <tr>
+                        <td><a href="/inventory/<%= inv.id %>"><%= inv.name %></a></td>
+                        <td><%= inv.type %></td>
+                        <td><%= inv.price %></td>
+                        <td><%= inv.size %></td>
+                        <td><%= inv.notes %></td>
+                        <td>
+                            <a href="/inventory/update/<%= inv.id %>">Edit</a> |
+                            <a href="/inventory/delete/<%= inv.id %>">Delete</a>
+                        </td>
+                    </tr>
+                <% }); %>
+                <!-- <% inventory.forEach(inventory => { %>
                     <tr>
                        <td><a href="/inventory/<%= inventory.id %>"><%= inventory.name %></a></td>
                        <td><%= inventory.type %></td>
@@ -23,7 +36,7 @@
                             <a href="/inventory/delete/<%= inventory.id %>">Delete</a>
                         </td>
                     </tr>
-                <% }); %>
+                <% }); %> -->
             </tbody>
         </table>
         <a href="/inventory/create" class="btn btn-primary">Add inventory Item</a>
