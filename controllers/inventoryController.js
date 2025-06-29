@@ -2,13 +2,13 @@ const Inventory = require('../models/inventory');
 
 exports.showAll = async (req, res) => {
   try {
-    const todos = await Todo.find(); // Fetch all todos
+    const inventory = await Inventory.find(); // Fetch all inventory
 
-    console.log(`Todos: ${todos}`);
-    res.render(res.locals.templatesPath + '/todo/all.ejs', { todos }); // returns teh view
+    console.log(`inventory: ${inventory}`);
+    res.render(res.locals.templatesPath + '/inventory/all.ejs', { inventory }); // returns the view
 
   } catch (err) {
     console.log(err);
-    res.redirect('/todos'); // Redirect to the todos list on error
+    res.redirect('/inventory'); // Redirect to the inventory list on error
   }
 }

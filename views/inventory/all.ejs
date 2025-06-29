@@ -1,28 +1,45 @@
-<%- include('../header'); -%>
+<%-include('../header'); -%>
 <div class="row">
     <div class="col-md-12">
         <table class="table">
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Notes</th>
-                    <th>Actions</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Size</th>
                 </tr>
             </thead>
             <tbody>
-                <% todos.forEach(todo => { %>
+                <% inventory.forEach(inv => { %>
                     <tr>
-                        <td><a href="/todo/<%= todo.id %>"><%= todo.name %></a></td>
-                        <td><%= todo.notes %></td>
+                        <td><a href="/inventory/<%= inv.id %>"><%= inv.name %></a></td>
+                        <td><%= inv.type %></td>
+                        <td><%= inv.price %></td>
+                        <td><%= inv.size %></td>
+                        <td><%= inv.notes %></td>
                         <td>
-                            <a href="/todo/update/<%= todo.id %>">Edit</a> |
-                            <a href="/todo/delete/<%= todo.id %>">Delete</a>
+                            <a href="/inventory/update/<%= inv.id %>">Edit</a> |
+                            <a href="/inventory/delete/<%= inv.id %>">Delete</a>
                         </td>
                     </tr>
                 <% }); %>
+                <!-- <% inventory.forEach(inventory => { %>
+                    <tr>
+                       <td><a href="/inventory/<%= inventory.id %>"><%= inventory.name %></a></td>
+                       <td><%= inventory.type %></td>
+                       <td>$<%= inventory.price %></td>
+                       <td><%= inventory.size %></td>
+                       <td><%= inventory.notes %></td>
+                     <td>
+                            <a href="/inventory/update/<%= inventory.id %>">Edit</a> |
+                            <a href="/inventory/delete/<%= inventory.id %>">Delete</a>
+                        </td>
+                    </tr>
+                <% }); %> -->
             </tbody>
         </table>
-        <a href="/todo/create" class="btn btn-primary">Add Todo</a>
+        <a href="/inventory/create" class="btn btn-primary">Add inventory Item</a>
     </div>
 </div>
 <%- include('../footer'); -%>

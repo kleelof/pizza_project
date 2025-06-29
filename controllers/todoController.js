@@ -22,7 +22,7 @@ exports.create = async (req, res) => {
 exports.showAll = async (req, res) => {
   
   try {
-    const todos = await Todox.find(); // Fetch all todos
+    const todos = await Todo.find(); // Fetch all todos
 
     console.log(`Todos: ${todos}`);
     res.render(res.locals.templatesPath + '/todo/all.ejs', { todos }); // returns teh view
@@ -49,7 +49,7 @@ exports.delete = async (req, res) => {
 // view a todo
 exports.view = async (req, res) => {
   try {
-    const todoId = req.params.id; // extrct todo ID from request parameters - /todo/:id
+    const todoId = req.params.id; // extract todo ID from request parameters - /todo/:id
     const todo = await Todo.findById(todoId); // Fetch the todo by ID
     if (!todo) {
       res.redirect('/todos'); // Redirect if todo not found

@@ -19,6 +19,31 @@ exports.create = async (req, res) => {
   }
 };
 
+/*
+Cam needs to merge his updates into main
+you need to pull those updates
+
+getCreateForm -> getVisitorForm
+copy add.ejs
+<form> change action to /visotor-create
+add 2 routes to app.py
+app.get('/visitor-create', orderController.getVisitorForm);
+app.post('/visitor-create', orderController.visitorCreate)
+*/
+
+exports.visitorCreate = async (req, res) => {
+  try {
+    const order = new Order({
+      ...req.body,
+      completed: false
+    });
+    const savedOrder = await newOrder.save();
+    res.redirect("/thankYouPage");
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+};
+
 // List all orders
 exports.showAll = async (req, res) => {
   try {
