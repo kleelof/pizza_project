@@ -51,9 +51,11 @@ exports.view = async (req, res) => {
   try {
     const todoId = req.params.id; // extract todo ID from request parameters - /todo/:id
     const todo = await Todo.findById(todoId); // Fetch the todo by ID
+
     if (!todo) {
-      res.redirect('/todos'); // Redirect if todo not found
+      return res.redirect('/todos'); // Use return here
     }
+
     res.render(res.locals.templatesPath + '/todo/view.ejs', { todo });
   } catch (err) {
     console.error(err);
