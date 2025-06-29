@@ -7,9 +7,7 @@
                     <th>Customer Name</th>
                     <th>Customer Address</th>
                     <th>Pizza</th>
-                    <th>Pizza Size</th>
                     <th>Drink</th>
-                    <th>Drink Size</th>
                     <th>Total</th>
                     <th>Actions</th>
 
@@ -20,14 +18,12 @@
                     <tr>
                         <td><%= order.customer_name %></td>
                         <td><%= order.customer_address %></td>
-                        <td><%= order.pizza %></td>
-                        <td><div style="width: 70px; margin: 5 auto; text-align: center;"><%= order.pizza_size %></div></td>
-                        <td><%= order.drink %></td>
-                        <td><div style="width: 70px; margin: 5 auto; text-align: center;"><%= order.drink_size %></td>
-                        <td><%= order.total %></td>
+                        <td><%= order.pizzaName %></td>
+                        <td><%= order.drinkName %></td>
+                        <td><%= (order.total !== undefined && order.total !== null) ? order.total.toFixed(2) : '0.00' %></td>
                         <td>
-                            <a href="/order/update/<%= order.id %>">Edit</a> |
-                            <a href="/order/delete/<%= order.id %>">Delete</a>
+                            <a href="/order/update/<%= order._id %>">Edit</a> |
+                            <a href="/order/delete/<%= order._id %>">Delete</a>
                         </td>
                     </tr>
                 <% }); %>

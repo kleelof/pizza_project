@@ -2,46 +2,52 @@
 <div class="row">
   <div class="col-md-12">
     <h1>Edit Your Order</h1>
-    <form action="/order/update" method="POST">
+    <form action="/order/update/<%= order._id %>" method="POST">
         <input type="hidden" name="id" value="<%= order.id %>" />
-      <label>Name: <input type="text" name="customer_name" required  class="form-control" value="<%= order.name %>" /></label><br />
-      <label>Address: <input type="text" name="customer_address" required  class="form-control" value="<%= order.address %>" /></label><br />
-
-            <label>Pizza Type:
-        <select name="pizza" class="form-control" required>
-          <option value="">-- Select Pizza --</option>
-          <option value="Pepperoni Pizza">Pepperoni Pizza</option>
-          <option value="Cheese Pizza">Cheese Pizza</option>
-          <option value="Vegan Pizza">Vegan Pizza</option>
-          <option value="Meat Lovers Pizza">Meat Lovers Pizza</option>
-        </select>
+      <label>Name: 
+        <input 
+          type="text" 
+          name="customer_name" 
+          required  
+          class="form-control" 
+          value="<%= order.customer_name %>" 
+        />
       </label><br />
 
-      <label>Pizza Size:
-        <select name="pizza_size" class="form-control" required>
-          <option value="">-- Select Size --</option>
-          <option value="S">Small</option>
-          <option value="M">Medium</option>
-          <option value="L">Large</option>
+      <label>Address: 
+        <input type="text" 
+          name="customer_address" 
+          required  
+          class="form-control" 
+          value="<%= order.customer_address %>" 
+        />
+      </label><br />
+
+      <label>Pizza Type:
+        <select name="pizza" class="form-control" required>
+          <option value="">-- Select Pizza --</option>
+          <% pizzas.forEach(pizza => { %>
+            <option
+              value="<%= pizza._id %>"
+              <%= pizza._id.toString() === order.pizza.toString() ? 'selected' : '' %>
+            >
+              <%= pizza.size %> <%= pizza.name %>
+            </option>
+          <% }) %>
         </select>
       </label><br />
 
       <label>Drink:
         <select name="drink" class="form-control">
           <option value="">-- Select Drink --</option>
-          <option value="Coke">Coke</option>
-          <option value="Sprite">Sprite</option>
-          <option value="Dr. Pepper">Dr. Pepper</option>
-          <option value="Water">Water</option>
-        </select>
-      </label><br />
-
-      <label>Drink Size:
-        <select name="drink_size" class="form-control">
-          <option value="">-- Select Size --</option>
-          <option value="S">Small</option>
-          <option value="M">Medium</option>
-          <option value="L">Large</option>
+          <% drinks.forEach(drink => { %>
+            <option
+              value="<%= drink._id %>"
+              <%= drink._id.toString() === order.drink.toString() ? 'selected' : '' %>
+            >
+              <%= drink.name %>
+            </option>
+          <% }) %>
         </select>
       </label><br />
 

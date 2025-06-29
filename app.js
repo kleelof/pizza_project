@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 
 // Static files
-app.use(express.static('static'));
+app.use(express.static(path.join(__dirname, 'static')));
 
 // Connect to MongoDB Atlas
 mongoose.connect(process.env.MONGO_URI)
@@ -53,15 +53,15 @@ app.post('/todo/update/', todoController.update);
 // Inventory Routes
 app.get('/inventory', inventoryController.showAll);
 
-
 // Ordering routes
 app.get('/order/create', orderController.getCreateForm);
 app.post('/order/create', orderController.create);
+app.get('/order/add', orderController.getCreateForm);
 app.get('/order', orderController.showAll);
 app.get('/order/delete/:id', orderController.delete);
 app.get('/order/:id', orderController.view);
 app.get('/order/update/:id', orderController.getUpdateForm);
-app.post('/order/update/', orderController.update);
+app.post('/order/update/:id', orderController.update);
 
 // Start the server
 app.listen(port, () => {

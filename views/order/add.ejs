@@ -9,38 +9,22 @@
       <label>Pizza Type:
         <select name="pizza" class="form-control" required>
           <option value="">-- Select Pizza --</option>
-          <option value="Pepperoni Pizza">Pepperoni Pizza</option>
-          <option value="Cheese Pizza">Cheese Pizza</option>
-          <option value="Vegan Pizza">Vegan Pizza</option>
-          <option value="Meat Lovers Pizza">Meat Lovers Pizza</option>
-        </select>
-      </label><br />
-
-      <label>Pizza Size:
-        <select name="pizza_size" class="form-control" required>
-          <option value="">-- Select Size --</option>
-          <option value="S">Small</option>
-          <option value="M">Medium</option>
-          <option value="L">Large</option>
+          <% pizzas.forEach(pizza => { %>
+            <option value="<%= pizza._id %>">
+              <%= pizza.name %> - <%= pizza.size %> ($<%= pizza.price.toFixed(2) %>)
+            </option>
+          <% }) %>
         </select>
       </label><br />
 
       <label>Drink:
         <select name="drink" class="form-control">
           <option value="">-- Select Drink --</option>
-          <option value="Coke">Coke</option>
-          <option value="Sprite">Sprite</option>
-          <option value="Dr. Pepper">Dr. Pepper</option>
-          <option value="Water">Water</option>
-        </select>
-      </label><br />
-
-      <label>Drink Size:
-        <select name="drink_size" class="form-control">
-          <option value="">-- Select Size --</option>
-          <option value="S">Small</option>
-          <option value="M">Medium</option>
-          <option value="L">Large</option>
+          <% drinks.forEach(drink => { %>
+            <option value="<%= drink._id %>">
+              <%= drink.name %> - <%= drink.size %> ($<%= drink.price.toFixed(2) %>)
+            </option>
+          <% }) %>
         </select>
       </label><br />
 
