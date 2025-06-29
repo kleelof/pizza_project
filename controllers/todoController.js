@@ -7,14 +7,17 @@ exports.getCreateForm = async(req, res) => {
 
 exports.create = async (req, res) => {
   try {
-    const newTodo = new Todo({
-      ...req.body,
+    const { name, notes } = req.body;
+    const todo = new Todo({
+      name,
+      notes,
       completed: false
     });
-    const savedTodo = await newTodo.save();
-    res.redirect("/todos");
+    await todo.save();
+    res.redirect('/todos');
   } catch (err) {
-    res.status(400).send(err.message);
+    console.error('Error creating todo:', err);
+    res.redirect('/todos');
   }
 };
 

@@ -1,26 +1,21 @@
 <%- include('../header'); -%>
-<div class="row">
-  <div class="col-12 col-md-6">
-    <h1>Create a New Todo</h1>
-    <form action="/todo/create" method="POST">
-      <label>Name: 
-        <input type="text" name="name" required  class="form-control" />
-      </label>
-      <br />
-      <label>Notes: 
-        <input type="text" name="notes" required  class="form-control" />
-      </label>
-      <br />
-      <label>Completed:: 
-        <select name="completed">
-          <option value="0">No</option>
-          <option value="1">Yes</option>
-        </select>
-      </label>
-      <br />
-      <button type="submit" class="btn btn btn-success mt-2">Submit</button>
-      <a href="/todos" class="btn btn btn-danger mt-2">Cancel</a>
-    </form>
-  </div>
+
+<div class="container mt-4">
+  <h1>Add New Todo</h1>
+  <form action="/todo/create" method="POST">
+    <div class="form-group mb-3">
+      <label for="name">Todo Name</label>
+      <input type="text" class="form-control" id="name" name="name" required />
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="notes">Notes</label>
+      <textarea class="form-control" id="notes" name="notes" rows="4"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">Create Todo</button>
+    <a href="/todos" class="btn btn-secondary">Cancel</a>
+  </form>
 </div>
+
 <%- include('../footer'); -%>
