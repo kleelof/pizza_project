@@ -44,24 +44,23 @@ app.get('/', homeController.getHomePage);
 // Todo Routes
 app.get('/todo/create', todoController.getCreateForm);
 app.post('/todo/create', todoController.create);
-app.get('/todos', todoController.showAll);
-app.get('/todo/delete/:id', todoController.delete);
+app.get('/admin/todos', todoController.showAll);
+app.get('/admin/todo/delete/:id', todoController.delete);
 app.get('/todo/:id', todoController.view);
-app.get('/todo/update/:id', todoController.getUpdateForm);
-app.post('/todo/update/', todoController.update);
+app.get('/admin/todo/update/:id', todoController.getUpdateForm);
+app.post('/admin/todo/update/', todoController.update);
 
 // Inventory Routes
-app.get('/inventory', inventoryController.showAll);
+app.get('/admin/inventory', inventoryController.showAll);
 
 // Ordering routes
 app.get('/order/create', orderController.getCreateForm);
 app.post('/order/create', orderController.create);
-app.get('/order/add', orderController.getCreateForm);
-app.get('/order', orderController.showAll);
-app.get('/order/delete/:id', orderController.delete);
-app.get('/order/:id', orderController.view);
-app.get('/order/update/:id', orderController.getUpdateForm);
-app.post('/order/update/:id', orderController.update);
+app.get('/admin/order', orderController.showAll);
+app.get('/admin/order/delete/:id', orderController.delete);
+app.get('/admin/order/:id', orderController.view);
+app.get('/admin/order/update/:id', orderController.getUpdateForm);
+app.post('/admin/order/update/:id', orderController.update);
 
 // Start the server
 app.listen(port, () => {
