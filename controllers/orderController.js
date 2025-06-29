@@ -12,8 +12,8 @@ exports.create = async (req, res) => {
       ...req.body,
       completed: false
     });
-    const savedOrder = await newOrder.save();
-    res.redirect("/orders");
+    const savedOrder = await order.save();
+    res.redirect("/order");
   } catch (err) {
     res.status(400).send(err.message);
   }
@@ -37,11 +37,11 @@ exports.delete = async (req, res) => {
   try {
     const orderId = req.params.id;
     await Order.findByIdAndDelete(orderId); // Delete the order by ID
-    res.redirect('/orders'); // Redirect to the orders list
+    res.redirect('/order'); // Redirect to the orders list
   }
   catch (err) {
     console.error(err);
-    res.redirect('/orders'); // Redirect to the orders list on error
+    res.redirect('/order'); // Redirect to the orders list on error
   }
 }
 
@@ -51,12 +51,12 @@ exports.view = async (req, res) => {
     const orderId = req.params.id; // extract order ID from request parameters - /order/:id
     const order = await Order.findById(orderId); // Fetch the order by ID
     if (!order) {
-      res.redirect('/orders'); // Redirect if order not found
+      res.redirect('/order'); // Redirect if order not found
     }
     res.render(res.locals.templatesPath + '/order/view.ejs', { order });
   } catch (err) {
     console.error(err);
-    res.redirect('/orders'); // Redirect to the orders list on error
+    res.redirect('/order'); // Redirect to the orders list on error
   }
 };
 
@@ -66,12 +66,12 @@ exports.getUpdateForm = async (req, res) => {
     const orderId = req.params.id; // Extract order ID from request parameters
     const order = await Order.findById(orderId); // Fetch the order by ID
     if (!order) {
-      return res.redirect('/orders'); // Redirect if order not found
+      return res.redirect('/order'); // Redirect if order not found
     }
     res.render(res.locals.templatesPath + '/order/update.ejs', { order }); // Render update form with order data
   } catch (err) {
     console.error(err);
-    res.redirect('/orders'); // Redirect to the todos list on error
+    res.redirect('/order'); // Redirect to the order list on error
   }
 };
 
@@ -83,6 +83,6 @@ exports.update = async (req, res) => {
     res.redirect('/order'); 
   } catch (err) {
     console.error(err);
-    res.redirect('/orders'); 
+    res.redirect('/order'); 
   }
 };

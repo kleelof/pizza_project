@@ -4,11 +4,11 @@
     <h1>Order Details</h1>
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title"><%= order.name %></h5>
-        <p class="card-text"><%= order.address %></p>
+        <h5 class="card-title"><%= order.customer_name %></h5>
+        <p class="card-text"><%= order.customer_address %></p>
         <a href="/order/update/<%= order.id %>" class="btn btn-primary">Edit</a>
         <a href="/order/delete/<%= order.id %>" class="btn btn-danger">Delete</a>
-        <a href="/orders" class="btn btn-secondary">Back to Orders</a>
+        <a href="/order" class="btn btn-secondary">Back to Orders</a>
       </div>
     </div>
   </div>
