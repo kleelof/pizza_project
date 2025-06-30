@@ -53,9 +53,6 @@ exports.create = async (req, res) => {
 
 
 /*
-Cam needs to merge his updates into main
-you need to pull those updates
-
 getCreateForm -> getVisitorForm
 copy add.ejs
 <form> change action to /visotor-create
