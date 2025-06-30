@@ -54,23 +54,13 @@ app.post('/admin/todo/update/', todoController.update);
 app.get('/admin/inventory', inventoryController.showAll);
 
 // Ordering routes
-//app.get('/order/create', orderController.getCreateForm);
-//app.post('/order/create', orderController.create);
-//app.get('/admin/order', orderController.showAll);
-//app.get('/admin/order/delete/:id', orderController.delete);
-//app.get('/admin/order/:id', orderController.view);
-//app.get('/admin/order/update/:id', orderController.getUpdateForm);
-//app.post('/admin/order/update/:id', orderController.update);
-
-// Ordering routes (specific first!)
 app.get('/order/create', orderController.getCreateForm);
 app.post('/order/create', orderController.create);
-
 app.get('/admin/order', orderController.showAll);
 app.get('/admin/order/delete/:id', orderController.delete);
+app.get('/admin/order/:id', orderController.view);
 app.get('/admin/order/update/:id', orderController.getUpdateForm);
 app.post('/admin/order/update/:id', orderController.update);
-app.get('/admin/order/view/:id', orderController.view); // safer than just /:id
 
 // Start the server
 app.listen(port, () => {
