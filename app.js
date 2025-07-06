@@ -52,6 +52,9 @@ app.post('/admin/todo/update/', todoController.update);
 
 // Inventory Routes
 app.get('/admin/inventory', inventoryController.showAll);
+app.get('/admin/inventory/update/:id', inventoryController.getUpdateForm);
+app.post('/admin/inventory/update/', inventoryController.update);
+app.get('/admin/inventory/delete/:id', inventoryController.delete);
 
 // Ordering routes
 app.get('/order/create', orderController.getCreateForm);

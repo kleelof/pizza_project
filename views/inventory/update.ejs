@@ -1,0 +1,19 @@
+<%- include('../header'); -%>
+<div class="row">
+  <div class="col-md-12">
+    <h1>Create a New inventory</h1>
+    <form action="/admin/inventory/update" method="POST">
+        <input type="hidden" name="id" value="<%= inventory.id %>" />
+      <label>Name: <input type="text" name="name" required  class="form-control" value="<%= inventory.name %>" /></label><br />
+      <label>Type: <input type="text" name="type" required  class="form-control" value="<%= inventory.type %>" /></label><br />
+      <label>Price: <input type="number" name="price" required  class="form-control" step=".01" value="<%= inventory.price %>" /></label><br />
+      <label>Size: <input type="text" name="size" required  class="form-control" value="<%= inventory.size %>" /></label><br />
+  
+      <button type="submit" class="btn btn btn-success mt-2">Submit</button>
+      <a href="/admin/inventory" class="btn btn btn-danger mt-2">Cancel</a>
+
+      
+    </form>
+  </div>
+</div>
+<%- include('../footer'); -%>
