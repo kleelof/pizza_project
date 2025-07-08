@@ -65,6 +65,7 @@ app.get('/admin/order/delete/:id', orderController.delete);
 app.get('/admin/order/:id', orderController.view);
 app.get('/admin/order/update/:id', orderController.getUpdateForm);
 app.post('/admin/order/update/:id', orderController.update);
+app.get('/order/confirm/:id', orderController.confirmOrder);
 
 // Start the server
 app.listen(port, () => {

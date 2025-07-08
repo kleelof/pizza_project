@@ -1,6 +1,19 @@
 const Order = require('../models/order');
-const path = require('path') //variable assigned for path normalization, reference line 26
 const Inventory = require('../models/inventory'); // This just uses the schema to query
+
+exports.confirmOrder = async (req, res) => {
+  try {
+    const orderId = req.params.id; // extract order ID from request parameters - /order/:id
+    const order = await Order.findById(orderId); // Fetch the order by ID
+    if (!order) {
+      res.redirect('/'); // Redirect if order not found
+    }
+    res.render(res.locals.templatesPath + '/order/confirm.ejs', { order });
+  } catch (err) {
+    console.error(err);
+    res.redirect('/'); // Redirect to the orders list on error
+  }
+};
 
 // Create a new order
 exports.getCreateForm = async(req, res) => {
@@ -41,6 +54,7 @@ exports.create = async (req, res) => {
 
     await order.save();
     res.redirect('/admin/order');
+    res.redirect('/order/confirm/' + order._id); // Redirect to the confirmation page with order ID
   } catch (err) {
     console.error(err);
     res.status(400).send(err.message);
@@ -63,7 +77,7 @@ exports.visitorCreate = async (req, res) => {
       ...req.body,
       completed: false
     });
-    const savedOrder = await order.save();
+    await order.save();
     res.redirect("/thankYouPage");
   } catch (err) {
     res.status(400).send(err.message);
