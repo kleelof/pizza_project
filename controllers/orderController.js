@@ -8,10 +8,6 @@ exports.getCreateForm = async(req, res) => {
     const allItems = await Inventory.find();
     const pizzas = allItems.filter(item => item.type === 'pizza');
     const drinks = allItems.filter(item => item.type === 'drink');
-  // grab inventory items
-  // separate into drinks and pizza
-  // send them to the add.ejs form
-  // put the item ID in the <select> options
     res.render('order/add', { pizzas, drinks });
   } catch (err) {
     console.error(err);
@@ -44,7 +40,7 @@ exports.create = async (req, res) => {
 
 
     await order.save();
-    res.redirect('/order');
+    res.redirect('/admin/order');
   } catch (err) {
     console.error(err);
     res.status(400).send(err.message);
