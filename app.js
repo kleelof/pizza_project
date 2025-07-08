@@ -1,3 +1,4 @@
+
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -65,4 +66,13 @@ app.post('/admin/order/update/:id', orderController.update);
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
+});
+
+app.get('/admin/dashboard', (req, res) => {
+  res.render('admin/dashboard');
+});
+
+ // Admin Dashboard Route
+app.get('/admin/dashboard', (req, res) => {
+  res.render('admin/dashboard');
 });

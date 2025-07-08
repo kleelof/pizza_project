@@ -1,0 +1,29 @@
+<%- include('../header'); -%>
+
+<div class="dashboard">
+  <h1>Admin Dashboard</h1>
+
+  <div class="dashboard-grid">
+
+    <a href="/admin/order" class="dashboard-card">
+      <i class="fas fa-pizza-slice"></i>
+      <h3>Manage Orders</h3>
+      <p>View, update, or delete customer orders</p>
+    </a>
+
+    <a href="/admin/inventory" class="dashboard-card">
+      <i class="fas fa-boxes"></i>
+      <h3>Manage Inventory</h3>
+      <p>Track pizza ingredients and item availability</p>
+    </a>
+
+    <a href="/admin/todos" class="dashboard-card">
+      <i class="fas fa-list-check"></i>
+      <h3>Team Todos</h3>
+      <p>Keep up with team tasks and notes</p>
+    </a>
+
+  </div>
+</div>
+
+<%- include('../footer'); -%>
