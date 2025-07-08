@@ -110,11 +110,11 @@ exports.delete = async (req, res) => {
   try {
     const orderId = req.params.id;
     await Order.findByIdAndDelete(orderId); // Delete the order by ID
-    res.redirect('/order'); // Redirect to the orders list
+    res.redirect('/admin/order'); // Redirect to the orders list
   }
   catch (err) {
     console.error(err);
-    res.redirect('/order'); // Redirect to the orders list on error
+    res.redirect('/admin/order'); // Redirect to the orders list on error
   }
 }
 
@@ -139,7 +139,7 @@ exports.getUpdateForm = async (req, res) => {
     const orderId = req.params.id; // Extract order ID from request parameters
     const order = await Order.findById(orderId); // Fetch the order by ID
     if (!order) {
-      return res.redirect('/order'); // Redirect if order not found
+      return res.redirect('/admin/order'); // Redirect if order not found
     }
 
     const allItems = await Inventory.find();
@@ -159,7 +159,7 @@ exports.update = async (req, res) => {
     const updatedData = req.body; // Get updated data from request body
     const updatedOrder = await Order.findByIdAndUpdate(updatedData.id, updatedData, { new: true }); // Update the order
     console.log('Updated Order:', updatedOrder);
-    res.redirect('/order'); 
+    res.redirect('/admin/order'); 
   } catch (err) {
     console.error(err);
     res.redirect('/order'); 
