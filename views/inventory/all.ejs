@@ -13,14 +13,14 @@
             <tbody>
                 <% inventory.forEach(inv => { %>
                     <tr>
-                        <td><a href="/inventory/<%= inv.id %>"><%= inv.name %></a></td>
+                        <td><a href="/admin/inventory/<%= inv.id %>"><%= inv.name %></a></td>
                         <td><%= inv.type %></td>
                         <td><%= inv.price %></td>
                         <td><%= inv.size %></td>
                         <td><%= inv.notes %></td>
                         <td>
-                            <a href="/inventory/update/<%= inv.id %>">Edit</a> |
-                            <a href="/inventory/delete/<%= inv.id %>">Delete</a>
+                            <a href="/admin/inventory/update/<%= inv.id %>">Edit</a> |
+                            <a href="/admin/inventory/delete/<%= inv.id %>">Delete</a>
                         </td>
                     </tr>
                 <% }); %>
@@ -39,7 +39,7 @@
                 <% }); %> -->
             </tbody>
         </table>
-        <a href="/admin/inventory/create" class="btn btn-primary">Add inventory Item</a>
+        <a href="admin/inventory/create" class="btn btn-primary">Add inventory Item</a>
     </div>
 </div>
 <%- include('../footer'); -%>

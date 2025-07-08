@@ -6,9 +6,9 @@
       <div class="card-body">
         <h5 class="card-title"><%= order.customer_name %></h5>
         <p class="card-text"><%= order.customer_address %></p>
-        <a href="/order/update/<%= order.id %>" class="btn btn-primary">Edit</a>
-        <a href="/order/delete/<%= order.id %>" class="btn btn-danger">Delete</a>
-        <a href="/order" class="btn btn-secondary">Back to Orders</a>
+        <a href="/admin/order/update/<%= order.id %>" class="btn btn-primary">Edit</a>
+        <a href="/admin/order/delete/<%= order.id %>" class="btn btn-danger">Delete</a>
+        <a href="/admin/order" class="btn btn-secondary">Back to Orders</a>
       </div>
     </div>
   </div>
