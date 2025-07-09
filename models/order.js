@@ -2,17 +2,23 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-  customer_name: String,
-  customer_address: String,
-  pizza: String,
-  drink: String,
-  total: Number,
-  completed: {
-    type: Boolean,
-    default: false
-  }
+  customerName: { type: String, required: true },         // NEW
+  pizza: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Inventory',
+    required: true
+  },
+  drink: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Inventory',
+    default: null
+  },
+  quantity: { type: Number, default: 1 },                 // NEW
+  notes: { type: String },                                // NEW
+  total: { type: Number, required: true },
+  completed: { type: Boolean, default: false },
+  createdAt: { type: Date, default: Date.now }
 });
 
-const Order = mongoose.model('Order', orderSchema);
+module.exports = mongoose.model('Order', orderSchema);
 
-module.exports = Order;

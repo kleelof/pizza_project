@@ -1,20 +1,54 @@
 <%- include('../header'); -%>
 
 <div class="container mt-4">
-  <h1>Add New Todo</h1>
-  <form action="/todo/create" method="POST">
+  <h1>Create New Pizza Order</h1>
+  <form action="/order/create" method="POST">
+    
     <div class="form-group mb-3">
-      <label for="name">Todo Name</label>
-      <input type="text" class="form-control" id="name" name="name" required />
+      <label for="customerName">Customer Name</label>
+      <input type="text" class="form-control" id="customerName" name="customerName" required />
     </div>
 
     <div class="form-group mb-3">
-      <label for="notes">Notes</label>
-      <textarea class="form-control" id="notes" name="notes" rows="4"></textarea>
+      <label for="pizza">Pizza Type & Size</label>
+      <select class="form-control" id="pizza" name="pizza" required>
+        <option value="">-- Select --</option>
+        <option value="Cheese Pizza|Small">Cheese Pizza (Small - $6.99)</option>
+        <option value="Cheese Pizza|Medium">Cheese Pizza (Medium - $8.99)</option>
+        <option value="Cheese Pizza|Large">Cheese Pizza (Large - $9.99)</option>
+
+        <option value="Pepperoni Pizza|Small">Pepperoni Pizza (Small - $7.49)</option>
+        <option value="Pepperoni Pizza|Medium">Pepperoni Pizza (Medium - $9.49)</option>
+        <option value="Pepperoni Pizza|Large">Pepperoni Pizza (Large - $11.49)</option>
+
+        <option value="Veggie Pizza|Small">Veggie Pizza (Small - $7.29)</option>
+        <option value="Veggie Pizza|Medium">Veggie Pizza (Medium - $9.29)</option>
+        <option value="Veggie Pizza|Large">Veggie Pizza (Large - $11.29)</option>
+      </select>
     </div>
 
-    <button type="submit" class="btn btn-success">Create Todo</button>
-    <a href="/todos" class="btn btn-secondary">Cancel</a>
+    <div class="form-group mb-3">
+      <label for="drink">Drink</label>
+      <select class="form-control" id="drink" name="drink">
+        <option value="">-- No Drink --</option>
+        <option value="Soft Drink|Small">Soft Drink (Small - $1.99)</option>
+        <option value="Soft Drink|Medium">Soft Drink (Medium - $2.49)</option>
+        <option value="Soft Drink|Large">Soft Drink (Large - $2.99)</option>
+      </select>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="quantity">Quantity</label>
+      <input type="number" class="form-control" id="quantity" name="quantity" min="1" value="1" required />
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="notes">Special Instructions</label>
+      <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">Place Order</button>
+    <a href="/admin/order" class="btn btn-secondary">Cancel</a>
   </form>
 </div>
 
