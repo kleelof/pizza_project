@@ -25,6 +25,28 @@ exports.getUpdateForm = async (req, res) => {
     res.redirect('/admin/inventory'); // Redirect to the todos list on error
   }
 };
+
+exports.getCreateForm = async(req, res) => {
+  res.render(res.locals.templatesPath + '/inventory/add.ejs');
+}
+
+exports.create = async (req, res) => {
+  try {
+    const { name, price, size, type  } = req.body;
+    const item = new Inventory({
+      name,
+      price,
+      size,
+      type
+    });
+    await item.save();
+    res.redirect('/admin');
+  } catch (err) {
+    console.error('Error creating todo:', err);
+    res.redirect('/admin');
+  }
+};
+
 exports.update = async (req, res) => {
   try {
     const updatedData = req.body; // Get updated data from request body

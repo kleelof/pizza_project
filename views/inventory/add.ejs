@@ -1,0 +1,38 @@
+<%- include('../header'); -%>
+
+<div class="container mt-4">
+  <h1>Add Inventory Item</h1>
+  <form action="/admin/inventory/create" method="POST">
+    <div class="form-group mb-3">
+      <label for="name">Item Name</label>
+      <input type="text" class="form-control" id="name" name="name" required />
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="notes">Price</label>
+      <input type="number" step=".01" class="form-control" id="price" name="price" rows="4"/>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="notes">Size</label>
+      <select name="size">
+        <option value="S" selected>Small</option>
+        <option value="M">Medium</option>
+        <option value="L">Large</option>
+      </select>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="notes">Type</label>
+      <select name="type">
+        <option value="pizza" selected>Pizza</option>
+        <option value="drink">Drink</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Add Item</button>
+    <a href="/admin" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+
+<%- include('../footer'); -%>
