@@ -1,4 +1,6 @@
 const Home = require('../models/home');
+const Order = require('../models/order');
+const Inventory = require('../models/inventory'); // This just uses the schema to query
 const path = require('path');
 
 exports.getHomePage = async (req, res) => {
@@ -11,25 +13,36 @@ exports.getHomePage = async (req, res) => {
   }
 };
 
-// Show Admin Form to Edit Home Page Content
-exports.getEditForm = async (req, res) => {
+exports.getAdminPage = async (req, res) => {
   try {
-    const homeData = await Home.findOne().sort({ last_updated: -1 });
-    res.render(path.join(res.locals.templatesPath, 'home', 'edit.ejs'), { homeData });
+    const orders = await Order.find();
+    const allItems = await Inventory.find();
+
+    // Map inventory items by _id as string
+    const itemsMap = {};
+    allItems.forEach(item => {
+      itemsMap[item._id.toString()] = item;
+    });
+
+    const ordersWithNames = orders.map(order => {
+      const pizza = itemsMap[order.pizza];
+      const drink = itemsMap[order.drink];
+
+      return {
+        ...order.toObject(),
+        pizzaName: pizza ? `${pizza.size} ${pizza.name}` : 'Large Pepperoni Pizza',
+        drinkName: drink ? drink.name : 'Dr.Pepper',
+        total: order.total || 0 //ensure total is not undefined
+      };
+    });
+
+    res.render(path.join(res.locals.templatesPath, 'home', 'admin.ejs'), { orders: ordersWithNames, inventory: allItems });
   } catch (err) {
     console.error(err);
-    res.redirect('/');
+    res.status(500).send('Error loading admin page.');
   }
 };
 
-// Update Home Page Content
-exports.update = async (req, res) => {
-  try {
-    const data = req.body;
-    const homeData = await Home.findOneAndUpdate({}, data, { upsert: true, new: true });
-    res.redirect('/');
-  } catch (err) {
-    console.error(err);
-    res.redirect('/');
-  }
+exports.getLoginPage = async (req, res) => {
+  res.render(path.join(res.locals.templatesPath, 'home', 'admin_login.ejs'));
 };

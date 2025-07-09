@@ -30,10 +30,10 @@ exports.update = async (req, res) => {
     const updatedData = req.body; // Get updated data from request body
     const updatedInventory = await Inventory.findByIdAndUpdate(updatedData.id, updatedData, { new: true }); // Update the todo
     console.log('Updated /admin/inventory:', updatedInventory);
-    res.redirect('/admin/inventory'); 
+    res.redirect('/admin'); 
   } catch (err) {
     console.error(err);
-    res.redirect('/admin/inventory'); 
+    res.redirect('/admin'); 
   }
 };
 
@@ -41,10 +41,10 @@ exports.delete = async (req, res) => {
   try {
     const inventoryId = req.params.id;
     await Inventory.findByIdAndDelete(inventoryId); // Delete the todo by ID
-    res.redirect('/admin/inventory'); // Redirect to the todos list
+    res.redirect('/admin'); // Redirect to the todos list
   }
   catch (err) {
     console.error(err);
-    res.redirect('/admin/inventory'); // Redirect to the todos list on error
+    res.redirect('/admin'); // Redirect to the todos list on error
   }
 }

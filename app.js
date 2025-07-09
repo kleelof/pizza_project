@@ -40,6 +40,9 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Home Page Route (NEW)
 app.get('/', homeController.getHomePage);
+app.get('/admin/login', homeController.getLoginPage);
+app.post('/admin/login', homeController.getAdminPage);
+app.get('/admin', homeController.getAdminPage);
 
 
 // Todo Routes

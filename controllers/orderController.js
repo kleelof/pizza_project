@@ -51,9 +51,7 @@ exports.create = async (req, res) => {
     });
 
 
-
     await order.save();
-    res.redirect('/admin/order');
     res.redirect('/order/confirm/' + order._id); // Redirect to the confirmation page with order ID
   } catch (err) {
     console.error(err);
